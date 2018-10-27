@@ -35,17 +35,17 @@ def get_unique_letters(letters):
 Returns words from all_words.dat that start with any unique letter from the list
 of given letters.
 """
-def get_initial_words(letters):
-    unique_letters = get_unique_letters(letters)
+def get_initial_words(unique_letters):
     file = open("all_words.dat", "r")
     file_as_lines = file.readlines()
     file.close()
     initial_words = []
     for line in file_as_lines:
+        word = line[:-1]
         for letter in unique_letters:
-            if line.startswith(letter):
-                initial_words.append(line)
+            if word.startswith(letter):
+                initial_words.append(word)
                 break
     return initial_words
-
+    
 
