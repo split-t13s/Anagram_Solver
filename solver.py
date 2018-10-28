@@ -6,8 +6,6 @@ from nltk.corpus import wordnet as wn
 all_words = wn.all_lemma_names()
 regexp = re.compile('^[A-Za-z]{3,}$')      # Strings with 3 or more letters
 
-test_letters = ["b", "e", "t", "t", "e", "r"]
-
 """
 Takes the list of all words and removes any word that does not match the
 specified regular expression 'regexp'.
@@ -52,7 +50,11 @@ def get_initial_words(unique_letters):
             initial_words.append(word)
     return initial_words
 
-def get_relevant_words(initial_words, all_letters):
+"""
+Filters words containing valid letters to words that contain upto the maximum
+occurences of the valid letters.
+"""
+def get_final_words(initial_words, all_letters):
     dict_letters = letters_as_dict(all_letters)
     final_words = []
     for word in initial_words:
@@ -85,8 +87,10 @@ def letters_as_dict(letters):
         else:
             dict_letters[letter] = 1
     return dict_letters
-                   
 
-unique_letters = get_unique_letters(test_letters)
-initial_words = get_initial_words(unique_letters)
-print(get_relevant_words(initial_words, test_letters))
+"""
+Executes code in order
+"""
+def solve(letters):
+    print(get_final_words(get_initial_words(get_unique_letters(letters)), letters))
+
