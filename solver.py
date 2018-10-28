@@ -106,6 +106,6 @@ def solve(letters):
 
 breaker = "utnspda"     # caused several errors, works correctly now
 
-letters = "finish"      # fails to find hung, hung not in wordnet
+letters = "runghy"      # fails to find hung, hung not in wordnet
 solve(list(letters))
 
