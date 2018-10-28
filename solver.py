@@ -80,9 +80,7 @@ def get_final_words(initial_words, all_letters):
 Sort list of words into descending size order
 """
 def sort_big_to_small(words):
-    words.sort(key=len, reverse=True)
-    return words
-
+    return words.sort(key=len, reverse=True)
 
 """
 Takes a list of letters and returns a dictionary of the unique letters, where
@@ -105,7 +103,7 @@ def solve(letters):
     print(sort_big_to_small(words))
 
 
-breaker = "utnspda"     # caused several, works correctly now
+breaker = "utnspda"     # caused several errors, works correctly now
 
 letters = "hungry"      # fails to find hung, hung not in wordnet
 solve(list(letters))
