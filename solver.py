@@ -60,20 +60,29 @@ def get_final_words(initial_words, all_letters):
     for word in initial_words:
         word_as_list = list(word)
         match = 0
-        for d_letter in dict_letters:
+        for d_letter in dict_letters:   # Compare word to dictionary
             count = 0
             for letter in word_as_list:
                 if d_letter == letter:
                     count += 1
-                    match += 1
+                    match += 1          # Increment total letters word matches
                 if count > dict_letters[d_letter]:
+                    match = 0    # Stops inclusion of bad words
                     break
             else:
                 continue
             break
-        if match == len(word_as_list):
+        if match == len(word_as_list):  # Check matched is same as word
             final_words.append(word)
     return final_words
+                        
+"""
+Sort list of words into descending size order
+"""
+def sort_big_to_small(words):
+    words.sort(key=len, reverse=True)
+    return words
+
 
 """
 Takes a list of letters and returns a dictionary of the unique letters, where
@@ -92,5 +101,12 @@ def letters_as_dict(letters):
 Executes code in order
 """
 def solve(letters):
-    print(get_final_words(get_initial_words(get_unique_letters(letters)), letters))
+    words = get_final_words(get_initial_words(get_unique_letters(letters)), letters)
+    print(sort_big_to_small(words))
+
+
+breaker = "utnspda"     # caused several, works correctly now
+
+letters = "hungry"      # fails to find hung, hung not in wordnet
+solve(list(letters))
 
