@@ -59,20 +59,20 @@ def get_final_words(initial_words, all_letters):
     final_words = []
     for word in initial_words:
         word_as_list = list(word)
+        match = 0
         for d_letter in dict_letters:
             count = 0
             for letter in word_as_list:
                 if d_letter == letter:
                     count += 1
-                    if count > dict_letters[d_letter]:
-                        break
-                if letter == word_as_list[-1] \
-                   and d_letter == list(dict_letters.keys())[-1]:
-                    if word not in final_words:
-                        final_words.append(word)
+                    match += 1
+                if count > dict_letters[d_letter]:
+                    break
             else:
                 continue
             break
+        if match == len(word_as_list):
+            final_words.append(word)
     return final_words
 
 """
